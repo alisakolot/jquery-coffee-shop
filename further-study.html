@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script
+			src="https://code.jquery.com/jquery-3.5.1.js"
+			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
     <title>Hackbright Coffee Shop</title>
 
     <link rel="stylesheet"
@@ -46,13 +50,18 @@
 <script>
     "use strict";
 
-    var myImage = document.getElementById("coffee_image");
-    var myRevenueMessage = document.getElementById("revenue");
+    // var myImage = document.getElementById("coffee_image");
+    myImage = $("coffee_image");
+
+    // var myRevenueMessage = document.getElementById("revenue");
+    myRevenueMessage = $("revene");
 
     var drinksOrdered = [];
 
     myImage.src = "static/coffee_beans.jpg";
-    myImage.addEventListener('click', function () { makeCoffee("brew"); });
+    
+    // myImage.addEventListener('click', function () { makeCoffee("brew"); });
+    myImage.on('click', function () { makeCoffee("brew"); })
 
     // Append the drink_type to drinks_ordered and use console.log to view
     // the output.
@@ -62,16 +71,22 @@
         console.log(drinksOrdered);
 
         var myRevenue = revenue();
-        myRevenueMessage.innerHTML = "Today's revenues: " + myRevenue;
+        // myRevenueMessage.innerHTML = "Today's revenues: " + myRevenue;
+        $("Today's Reveues: ").html(myRevenue);
 
-        myImage.setAttribute('src', "static/coffee_machine.jpg");
+        // myImage.setAttribute('src', "static/coffee_machine.jpg");
+        myImage.attr('src', "static/coffee_machine.jpg")
 
         setTimeout(function () {
-            myImage.setAttribute('src', "static/coffee_mug.jpg");
+        //     myImage.setAttribute('src', "static/coffee_mug.jpg");
+        // }, 1500);
+        myImage.attr("src", "static/coffee_mug.jpg");
         }, 1500);
 
         setTimeout(function () {
-            myImage.setAttribute('src', "static/coffee_beans.jpg");
+        //     myImage.setAttribute('src', "static/coffee_beans.jpg");
+        // }, 4000);
+        myImage.attr("src", "static/coffee_mug.jpg");
         }, 4000);
     }
 
@@ -79,13 +94,20 @@
     // Create variables for Espresso, Latte, and Hot Chocolate;
     // and add an event listener to each that calls makeCoffee.
 
-    var espresso = document.getElementById("espresso");
-    var latte = document.getElementById("latte");
-    var hotChocolate = document.getElementById("hot-chocolate");
+    // var espresso = document.getElementById("espresso");
+    espresso = $("espresso");
+    // var latte = document.getElementById("latte");
+    latte = $("latte");
+    // var hotChocolate = document.getElementById("hot-chocolate");
+    hotChocolate = $("hot-chocolate")
+
 
     espresso.addEventListener('click', function () {
         makeCoffee("espresso");
     });
+
+    espresso.on("click", function () {
+        makeCoffee("espresso");
 
     latte.addEventListener('click', function () {
         makeCoffee("latte");
